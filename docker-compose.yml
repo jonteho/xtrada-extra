@@ -1,0 +1,16 @@
+# docker compose up -d
+
+version: '3.9'
+
+services:
+    api:
+        image: ghcr.io/jonteho/xtrada-api:latest
+        ports:
+            - '3001:3001'
+
+    client:
+        image: ghcr.io/jonteho/xtrada-client:latest
+        depends_on:
+            - api
+        ports:
+            - '3000:3000'
